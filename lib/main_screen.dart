@@ -1,0 +1,137 @@
+import 'package:chugchug/MyPage.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title : "CHUG-CHUG",
+      home : MainPage(),
+    );  
+  }
+}
+
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(
+          80.0
+          ),
+          child: Column(
+            //mainAxisAlignment: MainAxisAlignment.center,
+            children : [
+        AppBar(
+            // elevation: 0,
+            backgroundColor:Color(0xffF5F5F5),
+            leading: IconButton(
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MyWidget()));
+              },
+              icon: Icon(
+                Icons.menu,
+                size: 50,
+              ),
+              ),
+            
+        ),
+      ],
+      ),),
+      body: Stack(children: <Widget>[
+        Container(
+          width: double.infinity,
+          height: 1000,
+          color: Color(0xffF5F5F5),
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: SizedBox(
+            width: double.infinity,
+            height : 130,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      width : 100,
+                      height: 100,
+                      //color: Color(0xff1B0FA3),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30), 
+                        color: Color(0xff1B0FA3).withOpacity(0.9),
+                      ),
+                      child: 
+                      IconButton(
+                        onPressed: () {
+                          
+                        },
+                        icon: Icon(
+                          Icons.search,
+                          size: 70),
+                          ),
+                    ),
+                    Container(
+                      width : 100,
+                      height: 100,
+                      //color: Color(0xff1B0FA3),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30), 
+                        color: Color(0xff1B0FA3).withOpacity(0.9),
+                      ),
+                      child: 
+                      IconButton(
+                        onPressed: () {
+                          
+                        },
+                        icon: Icon(
+                          Icons.search,
+                          size: 70),
+                        ),
+                    ),
+                    Container(
+                      width : 100,
+                      height: 100,
+                      //color: Color(0xff1B0FA3),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30), 
+                        color: Color(0xff1B0FA3).withOpacity(0.9),
+                      ),
+                      child: 
+                      IconButton(
+                        onPressed: () {
+                          
+                        },
+                        icon: Icon(
+                          Icons.search,
+                          size: 70,),
+                          ),
+                    ),
+                  ]),
+                  // SizedBox(
+                  //   height: 50,
+                  // ),
+              ],
+            ),
+          ),
+        )
+      ]),
+
+    );
+  }
+}
