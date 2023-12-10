@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title : "CHUG-CHUG",
       home : MainPage(),
     );  
@@ -39,6 +40,8 @@ class _MainPageState extends State<MainPage> {
             children : [
         AppBar(
             // elevation: 0,
+            //centerTitle: false,
+            //title: Image.asset('assets/chugchug.png', fit: BoxFit.contain, height: 80,),
             backgroundColor:Color(0xffF5F5F5),
             leading: IconButton(
               onPressed: (){

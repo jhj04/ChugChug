@@ -1,12 +1,73 @@
+import 'dart:ui';
+
+import 'package:chugchug/Community/CommunityNotifications.dart';
+import 'package:chugchug/Community/PostAddPage.dart';
+import 'package:chugchug/Community/PostSearchPage.dart';
 import 'package:flutter/material.dart';
-import 'PostDetailPage.dart'; // Import your PostDetailPage.dart file here
+import 'Community/PostDetailPage.dart'; // Import your PostDetailPage.dart file here
 
 class CommunityPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Community'),
+        centerTitle: false, // Left-align the title
+        title: Row(
+          children: [
+            Image.asset(
+              'assets/chugchug.png',
+              fit: BoxFit.contain,
+              height: 50,
+            ),
+            SizedBox(width: 8), // Add spacing between image and text
+            Text(
+              'Community',
+              style: TextStyle(
+                fontSize: 20,
+                fontFamily: "Fraunces",
+                fontVariations: <FontVariation>[FontVariation('wght', 700.0)],
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              // Navigate to the PostSearchPage when the search button is pressed
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PostSearchPage(),
+                ),
+              );
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.notifications),
+            onPressed: () {
+              // Handle notification button press
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CommunityNotificationsPage(),
+                ),
+              );
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () {
+              // Handle notification button press
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CommunityNotificationsPage(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,7 +94,7 @@ class CommunityPage extends StatelessWidget {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: 10, // Adjust the number of posts as needed
+              itemCount: 5, // Adjust the number of posts as needed
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
@@ -105,8 +166,12 @@ class CommunityPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Handle the button press to create a new post
-          print('Create Post Button Pressed');
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => PostAddPage(),
+            ),
+          );
         },
         child: Icon(Icons.edit),
       ),
