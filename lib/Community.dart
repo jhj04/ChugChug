@@ -114,7 +114,7 @@ class CommunityPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Card(
-                      elevation: 2,
+                      elevation: 1,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -134,15 +134,17 @@ class CommunityPage extends StatelessWidget {
                                   ),
                                   ListTile(
                                     title: Text(
-                                      '테스트',
+                                      '제목',
                                       style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                     subtitle: Text(
-                                      'This is the post title and content in one line.',
+                                      '이것은 세부 내용 중 한 줄을 보여 주는 부제목 란 입니다. 한 줄을 넘어가면 ... 으로 표시되도록 만들었습니다.',
                                       style: TextStyle(fontSize: 14),
+                                      overflow: TextOverflow.ellipsis, // Add this line
+                                      maxLines: 1, // Add this line
                                     ),
                                   ),
                                   Padding(
