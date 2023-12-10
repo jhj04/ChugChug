@@ -17,7 +17,8 @@ class PostDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Post Detail'),
+        centerTitle: false,
+        title: Image.asset('assets/chugchug.png', fit: BoxFit.contain, height: 50,),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

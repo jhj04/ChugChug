@@ -6,7 +6,24 @@ class CommunityPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Community'),
+        centerTitle: false, // Left-align the title
+        title: Image.asset('assets/chugchug.png', fit: BoxFit.contain, height: 50,),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              // Handle search button press
+              print('Search Button Pressed');
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.notifications),
+            onPressed: () {
+              // Handle notification button press
+              print('Notification Button Pressed');
+            },
+          ),
+        ],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,7 +50,7 @@ class CommunityPage extends StatelessWidget {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: 10, // Adjust the number of posts as needed
+              itemCount: 5, // Adjust the number of posts as needed
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
