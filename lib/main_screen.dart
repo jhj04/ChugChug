@@ -1,3 +1,4 @@
+import 'package:chugchug/Community.dart';
 import 'package:chugchug/MyPage.dart';
 import 'package:flutter/material.dart';
 
@@ -62,7 +63,7 @@ class _MainPageState extends State<MainPage> {
           alignment: Alignment.bottomCenter,
           child: SizedBox(
             width: double.infinity,
-            height : 130,
+            height : 150,
             child: Column(
               children: [
                 Row(
@@ -79,7 +80,7 @@ class _MainPageState extends State<MainPage> {
                       child: 
                       IconButton(
                         onPressed: () {
-                          
+
                         },
                         icon: Icon(
                           Icons.search,
@@ -109,16 +110,16 @@ class _MainPageState extends State<MainPage> {
                       height: 100,
                       //color: Color(0xff1B0FA3),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30), 
-                        color: Color(0xff1B0FA3).withOpacity(0.9),
+                        borderRadius: BorderRadius.circular(50),
+                        color: Color(0xff121212).withOpacity(0.9),
                       ),
                       child: 
                       IconButton(
                         onPressed: () {
-                          
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => CommunityPage()));
                         },
                         icon: Icon(
-                          Icons.search,
+                          Icons.people,
                           size: 70,),
                           ),
                     ),
