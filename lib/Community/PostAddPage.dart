@@ -68,7 +68,7 @@ class _PostAddPageState extends State<PostAddPage> {
             SizedBox(height: 16),
             DropdownButtonFormField(
               value: selectedCategory,
-              items: ['궁금해요', '모여요', '나눔해요']
+              items: ['궁금해요', '모여요', '공유해요']
                   .map((category) => DropdownMenuItem(
                 value: category,
                 child: Text(category),
