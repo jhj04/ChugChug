@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:chugchug/Community/CommunityNotifications.dart';
+import 'package:chugchug/Community/PostAddPage.dart';
 import 'package:chugchug/Community/PostSearchPage.dart';
 import 'package:flutter/material.dart';
 import 'Community/PostDetailPage.dart'; // Import your PostDetailPage.dart file here
@@ -165,8 +166,12 @@ class CommunityPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Handle the button press to create a new post
-          print('Create Post Button Pressed');
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => PostAddPage(),
+            ),
+          );
         },
         child: Icon(Icons.edit),
       ),
