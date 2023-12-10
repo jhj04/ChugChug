@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:chugchug/Community/CommunityNotifications.dart';
 import 'package:chugchug/Community/PostSearchPage.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +11,24 @@ class CommunityPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false, // Left-align the title
-        title: Image.asset('assets/chugchug.png', fit: BoxFit.contain, height: 50,),
+        title: Row(
+          children: [
+            Image.asset(
+              'assets/chugchug.png',
+              fit: BoxFit.contain,
+              height: 50,
+            ),
+            SizedBox(width: 8), // Add spacing between image and text
+            Text(
+              'Community',
+              style: TextStyle(
+                fontSize: 20,
+                fontFamily: "Fraunces",
+                fontVariations: <FontVariation>[FontVariation('wght', 700.0)],
+              ),
+            ),
+          ],
+        ),
         actions: [
           IconButton(
             icon: Icon(Icons.search),
@@ -25,6 +44,18 @@ class CommunityPage extends StatelessWidget {
           ),
           IconButton(
             icon: Icon(Icons.notifications),
+            onPressed: () {
+              // Handle notification button press
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CommunityNotificationsPage(),
+                ),
+              );
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.menu),
             onPressed: () {
               // Handle notification button press
               Navigator.push(

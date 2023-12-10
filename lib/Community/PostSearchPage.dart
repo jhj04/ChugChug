@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class PostSearchPage extends StatelessWidget {
@@ -6,7 +8,24 @@ class PostSearchPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false, // Left-align the title
-        title: Image.asset('assets/chugchug.png', fit: BoxFit.contain, height: 50,),
+        title: Row(
+          children: [
+            Image.asset(
+              'assets/chugchug.png',
+              fit: BoxFit.contain,
+              height: 50,
+            ),
+            SizedBox(width: 8), // Add spacing between image and text
+            Text(
+              'Community',
+              style: TextStyle(
+                fontSize: 20,
+                fontFamily: "Fraunces",
+                fontVariations: <FontVariation>[FontVariation('wght', 700.0)],
+              ),
+            ),
+          ],
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

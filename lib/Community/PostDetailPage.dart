@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class PostDetailPage extends StatelessWidget {
@@ -18,7 +20,24 @@ class PostDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        title: Image.asset('assets/chugchug.png', fit: BoxFit.contain, height: 50,),
+        title: Row(
+          children: [
+            Image.asset(
+              'assets/chugchug.png',
+              fit: BoxFit.contain,
+              height: 50,
+            ),
+            SizedBox(width: 8), // Add spacing between image and text
+            Text(
+              'Community',
+              style: TextStyle(
+                fontSize: 20,
+                fontFamily: "Fraunces",
+                fontVariations: <FontVariation>[FontVariation('wght', 700.0)],
+              ),
+            ),
+          ],
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
