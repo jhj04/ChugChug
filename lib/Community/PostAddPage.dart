@@ -1,6 +1,7 @@
 import 'dart:ui';
-
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class PostAddPage extends StatefulWidget {
   @override
@@ -11,6 +12,23 @@ class _PostAddPageState extends State<PostAddPage> {
   String selectedCategory = '궁금해요'; // Default category
   TextEditingController titleController = TextEditingController();
   TextEditingController contentController = TextEditingController();
+  late ImagePicker _imagePicker;
+  File? _imageFile;  // Change to File type
+
+  @override
+  void initState() {
+    super.initState();
+    _imagePicker = ImagePicker();
+  }
+
+  Future<void> _getImage() async {
+    final XFile? image = await _imagePicker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      if (image != null) {
+        _imageFile = File(image.path);  // Convert XFile to File
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +41,7 @@ class _PostAddPageState extends State<PostAddPage> {
               fit: BoxFit.contain,
               height: 50,
             ),
-            SizedBox(width: 8), // Add spacing between image and text
+            SizedBox(width: 8),
             Text(
               'Community',
               style: TextStyle(
@@ -67,6 +85,20 @@ class _PostAddPageState extends State<PostAddPage> {
               ),
             ),
             SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: _getImage,
+              child: Text('이미지 선택'),
+            ),
+            SizedBox(height: 16),
+            _imageFile != null
+                ? Image.file(
+              _imageFile!,
+              height: 100,
+              width: 100,
+              fit: BoxFit.cover,
+            )
+                : Container(),
+            SizedBox(height: 16),
             TextField(
               controller: contentController,
               maxLines: 8,
@@ -101,4 +133,3 @@ class _PostAddPageState extends State<PostAddPage> {
     );
   }
 }
-
