@@ -1,5 +1,7 @@
+import 'package:chugchug/Community/CommunityNotifications.dart';
+import 'package:chugchug/Community/PostSearchPage.dart';
 import 'package:flutter/material.dart';
-import 'PostDetailPage.dart'; // Import your PostDetailPage.dart file here
+import 'Community/PostDetailPage.dart'; // Import your PostDetailPage.dart file here
 
 class CommunityPage extends StatelessWidget {
   @override
@@ -12,15 +14,25 @@ class CommunityPage extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
-              // Handle search button press
-              print('Search Button Pressed');
+              // Navigate to the PostSearchPage when the search button is pressed
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PostSearchPage(),
+                ),
+              );
             },
           ),
           IconButton(
             icon: Icon(Icons.notifications),
             onPressed: () {
               // Handle notification button press
-              print('Notification Button Pressed');
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CommunityNotificationsPage(),
+                ),
+              );
             },
           ),
         ],
