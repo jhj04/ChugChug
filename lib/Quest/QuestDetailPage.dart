@@ -1,13 +1,19 @@
+// QuestDetailPage.dart
+
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class PostSearchPage extends StatelessWidget {
+class QuestDetailPage extends StatelessWidget {
+  final String title;
+  final String description;
+
+  QuestDetailPage({required this.title, required this.description});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: false, // Left-align the title
         title: Row(
           children: [
             Image.asset(
@@ -17,11 +23,11 @@ class PostSearchPage extends StatelessWidget {
             ),
             SizedBox(width: 8), // Add spacing between image and text
             Text(
-              'Community',
+              'Quest',
               style: TextStyle(
                 fontSize: 20,
                 fontFamily: "Fraunces",
-                fontVariations: <FontVariation>[FontVariation('wght', 700.0)],
+                fontVariations: const <FontVariation>[FontVariation('wght', 700.0)],
               ),
             ),
           ],
@@ -32,25 +38,16 @@ class PostSearchPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextField(
-              decoration: InputDecoration(
-                labelText: '제목/내용 검색',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(),
-              ),
+            Text(
+              'Quest Title: $title',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 16),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 0, // Replace with the actual number of search results
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text('Search Result $index'),
-                    // Handle tapping on search results if needed
-                  );
-                },
-              ),
+            Text(
+              'Quest Description: $description',
+              style: TextStyle(fontSize: 16),
             ),
+            // Add more details as needed
           ],
         ),
       ),

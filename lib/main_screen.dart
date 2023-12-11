@@ -1,5 +1,6 @@
 import 'package:chugchug/Community.dart';
 import 'package:chugchug/MyPage.dart';
+import 'package:chugchug/Quest/Quest.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -78,15 +79,15 @@ class _MainPageState extends State<MainPage> {
                       //color: Color(0xff1B0FA3),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30), 
-                        color: Color(0xff1B0FA3).withOpacity(0.9),
+                        color: Color(0xffb7b7b7).withOpacity(0.9),
                       ),
                       child: 
                       IconButton(
                         onPressed: () {
-
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => QuestPage()));
                         },
                         icon: Icon(
-                          Icons.search,
+                          Icons.check_box,
                           size: 70),
                           ),
                     ),

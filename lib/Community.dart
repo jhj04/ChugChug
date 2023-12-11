@@ -16,7 +16,7 @@ class CommunityPage extends StatelessWidget {
         title: Row(
           children: [
             Image.asset(
-              'assets/chugchug.png',
+              'assets/ChugChug_Typo.png',
               fit: BoxFit.contain,
               height: 50,
             ),
