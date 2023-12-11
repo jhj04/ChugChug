@@ -2,12 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class PostSearchPage extends StatelessWidget {
+class CommunityMenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: false, // Left-align the title
         title: Row(
           children: [
             Image.asset(
@@ -32,23 +31,33 @@ class PostSearchPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextField(
-              decoration: InputDecoration(
-                labelText: '제목/내용 검색',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 16),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 0, // Replace with the actual number of search results
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text('Search Result $index'),
-                    // Handle tapping on search results if needed
-                  );
-                },
+            buildMenuItem(Icons.announcement, '공지사항'),
+            buildMenuItem(Icons.settings, '설정'),
+            buildMenuItem(Icons.policy, '개인정보 처리방침'), // Replace 'policy' with the actual icon you want
+            // Add more items as needed
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildMenuItem(IconData icon, String text) {
+    return InkWell(
+      onTap: () {
+        // Handle item tap
+        print('$text tapped');
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        child: Row(
+          children: [
+            Icon(icon, size: 30),
+            SizedBox(width: 16),
+            Text(
+              text,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ],

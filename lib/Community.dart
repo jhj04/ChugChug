@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:chugchug/Community/CommunityMenu.dart';
 import 'package:chugchug/Community/CommunityNotifications.dart';
 import 'package:chugchug/Community/PostAddPage.dart';
 import 'package:chugchug/Community/PostSearchPage.dart';
@@ -15,7 +16,7 @@ class CommunityPage extends StatelessWidget {
         title: Row(
           children: [
             Image.asset(
-              'assets/chugchug.png',
+              'assets/ChugChug_Typo.png',
               fit: BoxFit.contain,
               height: 50,
             ),
@@ -25,7 +26,7 @@ class CommunityPage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 20,
                 fontFamily: "Fraunces",
-                fontVariations: <FontVariation>[FontVariation('wght', 700.0)],
+                fontVariations: const <FontVariation>[FontVariation('wght', 700.0)],
               ),
             ),
           ],
@@ -62,7 +63,7 @@ class CommunityPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => CommunityNotificationsPage(),
+                  builder: (context) => CommunityMenuPage(),
                 ),
               );
             },
@@ -76,7 +77,7 @@ class CommunityPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
-              children: [
+              children: const [
                 CircleAvatar(
                   radius: 30,
                   backgroundImage: AssetImage('assets/sample_image.jpeg'),
@@ -94,17 +95,18 @@ class CommunityPage extends StatelessWidget {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: 5, // Adjust the number of posts as needed
+              itemCount: 5,
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
+                    // Navigate to the post detail page
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => PostDetailPage(
-                          username: 'Username', // Replace with actual username
-                          postCaption: 'This is the post caption.', // Replace with actual caption
-                          postImageUrl: 'assets/sample_post_image.png', // Replace with actual image
+                          username: 'Username',
+                          postCaption: 'This is the post caption.',
+                          postImageUrl: 'assets/sample_post_image.png',
                         ),
                       ),
                     );
@@ -112,48 +114,95 @@ class CommunityPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Card(
-                      elevation: 2,
-                      child: Column(
+                      elevation: 1,
+                      child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                            ListTile(
-                              leading: CircleAvatar(
-                                radius: 25,
-                                backgroundImage: AssetImage('assets/sample_image.jpeg'),
-                              ),
-                              title: Text('테스트'),
-                              subtitle: Text('Posted 2 hours ago'),
-                            ),
-                            Image.asset(
-                              'assets/sample_post_image.png', // Replace with your post image
-                              fit: BoxFit.cover,
-                              width: double.infinity,
-                              height: 200,
-                            ),
-                            Padding(
+                          // Category and Texts
+                          Expanded(
+                            child: Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'This is the post caption. Write your own caption here!',
-                                style: TextStyle(fontSize: 16),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  Text(
+                                    'Category', // Replace with actual category
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  ListTile(
+                                    title: Text(
+                                      '제목',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    subtitle: Text(
+                                      '이것은 세부 내용 중 한 줄을 보여 주는 부제목 란 입니다. 한 줄을 넘어가면 ... 으로 표시되도록 만들었습니다.',
+                                      style: TextStyle(fontSize: 14),
+                                      overflow: TextOverflow.ellipsis, // Add this line
+                                      maxLines: 1, // Add this line
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          '2시간 전',
+                                          style: TextStyle(color: Colors.grey, fontSize: 12),
+                                        ),
+                                        SizedBox(width: 8), // Add space between timestamp and icons
+                                        Row(
+                                          children: [
+                                            Icon(Icons.remove_red_eye, size: 16),
+                                            SizedBox(width: 3),
+                                            Text('100', style: TextStyle(fontSize: 12)),
+                                          ],
+                                        ),
+                                        SizedBox(width: 8), // Add space between icons
+                                        Row(
+                                          children: [
+                                            Icon(Icons.thumb_up, size: 16),
+                                            SizedBox(width: 3),
+                                            Text('50', style: TextStyle(fontSize: 12)),
+                                          ],
+                                        ),
+                                        SizedBox(width: 8), // Add space between icons
+                                        Row(
+                                          children: [
+                                            Icon(Icons.comment, size: 16),
+                                            SizedBox(width: 3),
+                                            Text('5', style: TextStyle(fontSize: 12)),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                IconButton(
-                                  icon: Icon(Icons.thumb_up),
-                                  onPressed: () {
-                                    // Handle like button press
-                                  },
+                          ),
+                          // Post Image
+                          Container(
+                            margin: EdgeInsets.only(right: 8.0), // Add margin to the right side
+                            height: 140, // Set the height to match the desired height
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 8.0), // Adjust the top padding
+                                child: Image.asset(
+                                  'assets/sample_post_image.png',
+                                  width: 100,
+                                  height: 100,
+                                  fit: BoxFit.cover,
                                 ),
-                                IconButton(
-                                  icon: Icon(Icons.comment),
-                                  onPressed: () {
-                                    // Handle comment button press
-                                  },
-                                ),
-                              ],
+                              ),
                             ),
+                          ),
                         ],
                       ),
                     ),
@@ -162,6 +211,9 @@ class CommunityPage extends StatelessWidget {
               },
             ),
           ),
+
+
+
         ],
       ),
       floatingActionButton: FloatingActionButton(
