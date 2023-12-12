@@ -33,6 +33,9 @@ class QuestPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(
+              height: 20,
+            ),
             // Larger Character at the center
             Container(
               width: 200, // Adjust the width to make the character larger
