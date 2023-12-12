@@ -28,7 +28,31 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin{
+
+    late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 2),
+    );
+
+    _animation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOut,
+      ),
+    );
+
+    _controller.repeat(reverse: true);
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,11 +86,30 @@ class _MainPageState extends State<MainPage> {
         // )
       ],
       ),),
-      body: Stack(children: <Widget>[
+      body: Stack(
+        children: <Widget>[
         Container(
           width: double.infinity,
           height: 1000,
           color: Color(0xffF5F5F5),
+        ),
+        Center(
+            child: Container(
+              margin: EdgeInsets.only(bottom: 150.0),
+              child: AnimatedBuilder(
+                animation: _animation,
+                builder: (context, child) {
+                  return Transform.translate(
+                    offset: Offset(0, 20 * _animation.value), // Adjust the amplitude of the wave
+                    child: Image.asset(
+                      'chugchug_character.png', // Replace with your character image path
+                      width: 300, // Set the desired width
+                      height: 300, // Set the desired height
+                    ),
+                  );
+                }
+              ),
+            )
         ),
         Align(
           alignment: Alignment.bottomCenter,
@@ -140,8 +183,8 @@ class _MainPageState extends State<MainPage> {
             ),
           ),
         )
-      ]),
-
+      ],
+      ),
     );
   }
 }
