@@ -32,9 +32,10 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
+      appBar: 
+      PreferredSize(
         preferredSize: Size.fromHeight(
-          80.0
+          70.0
           ),
           child: Column(
             //mainAxisAlignment: MainAxisAlignment.center,
@@ -44,6 +45,7 @@ class _MainPageState extends State<MainPage> {
             //centerTitle: false,
             //title: Image.asset('assets/chugchug.png', fit: BoxFit.contain, height: 80,),
             backgroundColor:Color(0xffF5F5F5),
+            
             leading: IconButton(
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) => MyWidget()));
@@ -55,6 +57,9 @@ class _MainPageState extends State<MainPage> {
               ),
             
         ),
+        // SizedBox(
+        //   height: 10,
+        // )
       ],
       ),),
       body: Stack(children: <Widget>[
