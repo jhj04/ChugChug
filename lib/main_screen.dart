@@ -109,7 +109,41 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                   );
                 }
               ),
-            )
+            ),
+        ),
+        Column(
+          children: [
+            SizedBox(
+              height: 510,
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: 
+              InkWell(
+                onTap: () {
+                  print("onPressed");
+                },
+                child: Container(
+                  width: 200,
+                  height: 50,
+                  decoration:BoxDecoration(
+                    borderRadius: BorderRadius.circular(30), 
+                    color: Color(0xff1B0FA3).withOpacity(0.9),
+                    ),
+                    child: (
+                      Text(
+                        "척척이",
+                        style:TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                          ),
+                          textAlign: TextAlign.center,
+                      )
+                    ),
+                ),
+              ),
+            ),
+          ],
         ),
         Align(
           alignment: Alignment.bottomCenter,
