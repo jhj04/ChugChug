@@ -2,6 +2,8 @@ import 'package:chugchug/Community.dart';
 import 'package:chugchug/MyPage.dart';
 import 'package:chugchug/Quest/Quest.dart';
 import 'package:flutter/material.dart';
+// import 'package:wave/config.dart';
+// import 'package:wave/wave.dart';
 
 void main() {
   runApp(const MyApp());
@@ -90,8 +92,59 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
         children: <Widget>[
         Container(
           width: double.infinity,
-          height: 1000,
+          height: 1300,
           color: Color(0xffF5F5F5),
+        ),
+        // WaveWidget(
+        //       config: CustomConfig(
+        //         gradients: [
+        //           [Colors.blue, Colors.green],
+        //           [Colors.green, Colors.blue],
+        //         ],
+        //         durations: [35000, 19440],
+        //         heightPercentages: [0.20, 0.25],
+        //         blur: MaskFilter.blur(BlurStyle.solid, 10),
+        //         gradientBegin: Alignment.bottomLeft,
+        //         gradientEnd: Alignment.topRight,
+        //       ),
+        //       waveAmplitude: 0,
+        //       size: Size(
+        //         double.infinity,
+        //         double.infinity,
+        //       ),
+        //     ),
+        //     Center(
+        //       child: Text(
+        //         '물결 효과',
+        //         style: TextStyle(
+        //           color: Colors.white,
+        //           fontSize: 24.0,
+        //         ),
+        //       ),
+        //     ),
+        Align(
+          alignment: Alignment.bottomLeft,
+          child: Image.asset(
+            'coral1.png',
+            width: 300,
+            height: 300,
+          ),
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Image.asset(
+            'coral2.png',
+            width: 300,
+            height: 300,
+          ),
+        ),
+        Align(
+          alignment: Alignment.bottomRight,
+          child: Image.asset(
+            'coral3.png',
+            width: 200,
+            height: 200,
+          ),
         ),
         Center(
             child: Container(
@@ -210,9 +263,6 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                           ),
                     ),
                   ]),
-                  // SizedBox(
-                  //   height: 50,
-                  // ),
               ],
             ),
           ),
