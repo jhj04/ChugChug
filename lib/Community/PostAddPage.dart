@@ -1,5 +1,5 @@
-import 'dart:ui';
 import 'dart:io';
+import 'package:chugchug/Widgets/Bar_Widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -34,24 +34,7 @@ class _PostAddPageState extends State<PostAddPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          children: [
-            Image.asset(
-              'assets/ChugChug_Typo.png',
-              fit: BoxFit.contain,
-              height: 50,
-            ),
-            SizedBox(width: 8),
-            Text(
-              'Community',
-              style: TextStyle(
-                fontSize: 20,
-                fontFamily: "Fraunces",
-                fontVariations: <FontVariation>[FontVariation('wght', 700.0)],
-              ),
-            ),
-          ],
-        ),
+        title: Top_Logos("Community", 16),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

@@ -3,12 +3,12 @@ import 'dart:ui';
 import 'package:chugchug/Widgets/Bar_Widgets.dart';
 import 'package:flutter/material.dart';
 
-class CommunityMenuPage extends StatelessWidget {
+class HomeMenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Top_Logos("Community", 16),
+        title: Top_Logos("Home", 16),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

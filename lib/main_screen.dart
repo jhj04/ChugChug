@@ -1,5 +1,5 @@
-import 'package:chugchug/Community.dart';
-import 'package:chugchug/MyPage.dart';
+import 'package:chugchug/Community/Community.dart';
+import 'package:chugchug/Home/Home.dart';
 import 'package:chugchug/Quest/Quest.dart';
 import 'package:flutter/material.dart';
 
@@ -10,14 +10,17 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title : "CHUG-CHUG",
-      home : MainPage(),
-    );  
+      title: "척척",
+      theme: ThemeData(
+        // 전체 배경 색 설정
+        scaffoldBackgroundColor: Color(0xfff5f1e5), // 여기에서 원하는 색상을 선택하세요
+      ),
+      home: MainPage(),
+    );
   }
 }
 
@@ -29,119 +32,42 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  int _currentIndex = 1; // 현재 선택된 페이지 인덱스
+
+  final List<Widget> _pages = [
+    // 여기에 앱의 여러 페이지 위젯을 추가합니다.
+    // 예를 들면, MyWidget(), QuestPage(), CommunityPage() 등
+    QuestPage(),
+    HomePage(),
+    CommunityPage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: 
-      PreferredSize(
-        preferredSize: Size.fromHeight(
-          70.0
+      body: _pages[_currentIndex], // 선택된 페이지를 표시합니다.
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex, // 현재 선택된 페이지 인덱스 설정
+        onTap: (int index) {
+          setState(() {
+            _currentIndex = index; // 페이지가 탭될 때 현재 페이지 인덱스 업데이트
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.check_box),
+            label: '퀘스트',
           ),
-          child: Column(
-            //mainAxisAlignment: MainAxisAlignment.center,
-            children : [
-        AppBar(
-            // elevation: 0,
-            //centerTitle: false,
-            //title: Image.asset('assets/chugchug.png', fit: BoxFit.contain, height: 80,),
-            backgroundColor:Color(0xffF5F5F5),
-            
-            leading: IconButton(
-              onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MyWidget()));
-              },
-              icon: Icon(
-                Icons.menu,
-                size: 50,
-              ),
-              ),
-            
-        ),
-        // SizedBox(
-        //   height: 10,
-        // )
-      ],
-      ),),
-      body: Stack(children: <Widget>[
-        Container(
-          width: double.infinity,
-          height: 1000,
-          color: Color(0xffF5F5F5),
-        ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: SizedBox(
-            width: double.infinity,
-            height : 150,
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      width : 100,
-                      height: 100,
-                      //color: Color(0xff1B0FA3),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30), 
-                        color: Color(0xffb7b7b7).withOpacity(0.9),
-                      ),
-                      child: 
-                      IconButton(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => QuestPage()));
-                        },
-                        icon: Icon(
-                          Icons.check_box,
-                          size: 70),
-                          ),
-                    ),
-                    Container(
-                      width : 100,
-                      height: 100,
-                      //color: Color(0xff1B0FA3),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30), 
-                        color: Color(0xff1B0FA3).withOpacity(0.9),
-                      ),
-                      child: 
-                      IconButton(
-                        onPressed: () {
-                          
-                        },
-                        icon: Icon(
-                          Icons.search,
-                          size: 70),
-                        ),
-                    ),
-                    Container(
-                      width : 100,
-                      height: 100,
-                      //color: Color(0xff1B0FA3),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Color(0xff121212).withOpacity(0.9),
-                      ),
-                      child: 
-                      IconButton(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => CommunityPage()));
-                        },
-                        icon: Icon(
-                          Icons.people,
-                          size: 70,),
-                          ),
-                    ),
-                  ]),
-                  // SizedBox(
-                  //   height: 50,
-                  // ),
-              ],
-            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: '홈',
           ),
-        )
-      ]),
-
+          BottomNavigationBarItem(
+            icon: Icon(Icons.commit),
+            label: '커뮤니티',
+          ),
+        ],
+      ),
     );
   }
 }

@@ -4,8 +4,9 @@ import 'package:chugchug/Community/CommunityMenu.dart';
 import 'package:chugchug/Community/CommunityNotifications.dart';
 import 'package:chugchug/Community/PostAddPage.dart';
 import 'package:chugchug/Community/PostSearchPage.dart';
+import 'package:chugchug/Widgets/Bar_Widgets.dart';
 import 'package:flutter/material.dart';
-import 'Community/PostDetailPage.dart'; // Import your PostDetailPage.dart file here
+import 'PostDetailPage.dart'; // Import your PostDetailPage.dart file here
 
 class CommunityPage extends StatelessWidget {
   @override
@@ -13,24 +14,7 @@ class CommunityPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false, // Left-align the title
-        title: Row(
-          children: [
-            Image.asset(
-              'assets/ChugChug_Typo.png',
-              fit: BoxFit.contain,
-              height: 50,
-            ),
-            SizedBox(width: 8), // Add spacing between image and text
-            Text(
-              'Community',
-              style: TextStyle(
-                fontSize: 20,
-                fontFamily: "Fraunces",
-                fontVariations: const <FontVariation>[FontVariation('wght', 700.0)],
-              ),
-            ),
-          ],
-        ),
+        title: Top_Logos("Community", 16),
         actions: [
           IconButton(
             icon: Icon(Icons.search),

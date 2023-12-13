@@ -1,7 +1,6 @@
-// QuestDetailPage.dart
-
 import 'dart:ui';
 
+import 'package:chugchug/Widgets/Bar_Widgets.dart';
 import 'package:flutter/material.dart';
 
 class QuestDetailPage extends StatelessWidget {
@@ -14,24 +13,7 @@ class QuestDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          children: [
-            Image.asset(
-              'assets/ChugChug_Typo.png',
-              fit: BoxFit.contain,
-              height: 50,
-            ),
-            SizedBox(width: 8), // Add spacing between image and text
-            Text(
-              'Quest',
-              style: TextStyle(
-                fontSize: 20,
-                fontFamily: "Fraunces",
-                fontVariations: const <FontVariation>[FontVariation('wght', 700.0)],
-              ),
-            ),
-          ],
-        ),
+        title: Top_Logos("Quest", 16),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
