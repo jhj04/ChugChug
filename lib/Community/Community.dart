@@ -1,25 +1,23 @@
-import 'dart:ui';
-
 import 'package:chugchug/Community/CommunityMenu.dart';
 import 'package:chugchug/Community/CommunityNotifications.dart';
 import 'package:chugchug/Community/PostAddPage.dart';
 import 'package:chugchug/Community/PostSearchPage.dart';
 import 'package:chugchug/Widgets/Bar_Widgets.dart';
 import 'package:flutter/material.dart';
-import 'PostDetailPage.dart'; // Import your PostDetailPage.dart file here
+import 'PostDetailPage.dart';
+import 'Post.dart';
 
 class CommunityPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: false, // Left-align the title
+        centerTitle: false,
         title: Top_Logos("Community", 16),
         actions: [
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
-              // Navigate to the PostSearchPage when the search button is pressed
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -31,7 +29,6 @@ class CommunityPage extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.notifications),
             onPressed: () {
-              // Handle notification button press
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -43,7 +40,6 @@ class CommunityPage extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.menu),
             onPressed: () {
-              // Handle notification button press
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -54,151 +50,161 @@ class CommunityPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Display user profile at the top
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              children: const [
-                CircleAvatar(
-                  radius: 30,
-                  backgroundImage: AssetImage('assets/sample_image.jpeg'),
-                ),
-                SizedBox(width: 16),
-                Text(
-                  '조원재',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {
-                    // Navigate to the post detail page
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => PostDetailPage(
-                          username: 'Username',
-                          postCaption: 'This is the post caption.',
-                          postImageUrl: 'assets/sample_post_image.png',
+      body: FutureBuilder<List<Post>>(
+        future: getPostList(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Text('Error: ${snapshot.error}'),
+            );
+          } else {
+            final List<Post> posts = snapshot.data ?? [];
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Row(
+                    children: const [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundImage: AssetImage('assets/sample_image.jpeg'),
+                      ),
+                      SizedBox(width: 16),
+                      Text(
+                        '조원재',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Card(
-                      elevation: 1,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Category and Texts
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  Text(
-                                    'Category', // Replace with actual category
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                  ListTile(
-                                    title: Text(
-                                      '제목',
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    subtitle: Text(
-                                      '이것은 세부 내용 중 한 줄을 보여 주는 부제목 란 입니다. 한 줄을 넘어가면 ... 으로 표시되도록 만들었습니다.',
-                                      style: TextStyle(fontSize: 14),
-                                      overflow: TextOverflow.ellipsis, // Add this line
-                                      maxLines: 1, // Add this line
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: Row(
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: posts.length,
+                    itemBuilder: (context, index) {
+                      final post = posts[index];
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PostDetailPage(
+                                username: 'Username',
+                                postCaption: post.title,
+                                postImageUrl: post.imageUrl,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Card(
+                            elevation: 1,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          '2시간 전',
-                                          style: TextStyle(color: Colors.grey, fontSize: 12),
+                                          post.category,
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.grey,
+                                          ),
                                         ),
-                                        SizedBox(width: 8), // Add space between timestamp and icons
-                                        Row(
-                                          children: [
-                                            Icon(Icons.remove_red_eye, size: 16),
-                                            SizedBox(width: 3),
-                                            Text('100', style: TextStyle(fontSize: 12)),
-                                          ],
+                                        ListTile(
+                                          title: Text(
+                                            post.title,
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          subtitle: Text(
+                                            post.subtitle,
+                                            style: TextStyle(fontSize: 14),
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 1,
+                                          ),
                                         ),
-                                        SizedBox(width: 8), // Add space between icons
-                                        Row(
-                                          children: [
-                                            Icon(Icons.thumb_up, size: 16),
-                                            SizedBox(width: 3),
-                                            Text('50', style: TextStyle(fontSize: 12)),
-                                          ],
-                                        ),
-                                        SizedBox(width: 8), // Add space between icons
-                                        Row(
-                                          children: [
-                                            Icon(Icons.comment, size: 16),
-                                            SizedBox(width: 3),
-                                            Text('5', style: TextStyle(fontSize: 12)),
-                                          ],
+                                        Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                post.timestamp,
+                                                style: TextStyle(color: Colors.grey, fontSize: 12),
+                                              ),
+                                              SizedBox(width: 8),
+                                              Row(
+                                                children: [
+                                                  Icon(Icons.remove_red_eye, size: 16),
+                                                  SizedBox(width: 3),
+                                                  Text(post.views.toString(), style: TextStyle(fontSize: 12)),
+                                                ],
+                                              ),
+                                              SizedBox(width: 8),
+                                              Row(
+                                                children: [
+                                                  Icon(Icons.thumb_up, size: 16),
+                                                  SizedBox(width: 3),
+                                                  Text(post.likes.toString(), style: TextStyle(fontSize: 12)),
+                                                ],
+                                              ),
+                                              SizedBox(width: 8),
+                                              Row(
+                                                children: [
+                                                  Icon(Icons.comment, size: 16),
+                                                  SizedBox(width: 3),
+                                                  Text(post.comments.toString(), style: TextStyle(fontSize: 12)),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          // Post Image
-                          Container(
-                            margin: EdgeInsets.only(right: 8.0), // Add margin to the right side
-                            height: 140, // Set the height to match the desired height
-                            child: Align(
-                              alignment: Alignment.centerRight,
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 8.0), // Adjust the top padding
-                                child: Image.asset(
-                                  'assets/sample_post_image.png',
-                                  width: 100,
-                                  height: 100,
-                                  fit: BoxFit.cover,
                                 ),
-                              ),
+                                Container(
+                                  margin: EdgeInsets.only(right: 8.0),
+                                  height: 140,
+                                  child: Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: Image.asset(
+                                        post.imageUrl,
+                                        width: 100,
+                                        height: 100,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
-          ),
-
-
-
-        ],
+                ),
+              ],
+            );
+          }
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
