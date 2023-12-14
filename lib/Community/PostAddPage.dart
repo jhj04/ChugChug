@@ -1,7 +1,11 @@
-import 'dart:ui';
 import 'dart:io';
+import 'package:chugchug/Community/Community.dart';
+import 'package:chugchug/Community/Post.dart';
+import 'package:chugchug/GoogleSheetsHelper.dart';
+import 'package:chugchug/Widgets/Bar_Widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PostAddPage extends StatefulWidget {
   @override
@@ -10,15 +14,22 @@ class PostAddPage extends StatefulWidget {
 
 class _PostAddPageState extends State<PostAddPage> {
   String selectedCategory = '궁금해요'; // Default category
+  String userName = "";
   TextEditingController titleController = TextEditingController();
   TextEditingController contentController = TextEditingController();
   late ImagePicker _imagePicker;
   File? _imageFile;  // Change to File type
+  final GoogleSheetsHelper sheetsHelper = GoogleSheetsHelper();
 
   @override
   void initState() {
     super.initState();
     _imagePicker = ImagePicker();
+  }
+
+  void getUserName() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    userName = prefs.getString('userName') ?? '무명';
   }
 
   Future<void> _getImage() async {
@@ -32,26 +43,13 @@ class _PostAddPageState extends State<PostAddPage> {
 
   @override
   Widget build(BuildContext context) {
+    // Initialize Google Sheets helper in the constructor or initState
+    sheetsHelper.init();
+    getUserName();
+
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          children: [
-            Image.asset(
-              'assets/ChugChug_Typo.png',
-              fit: BoxFit.contain,
-              height: 50,
-            ),
-            SizedBox(width: 8),
-            Text(
-              'Community',
-              style: TextStyle(
-                fontSize: 20,
-                fontFamily: "Fraunces",
-                fontVariations: <FontVariation>[FontVariation('wght', 700.0)],
-              ),
-            ),
-          ],
-        ),
+        title: Top_Logos("Community", 16),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -115,6 +113,11 @@ class _PostAddPageState extends State<PostAddPage> {
                   onPressed: () {
                     // Handle saving as a draft
                     print('임시저장');
+                    String title = titleController.text;
+                    String category = selectedCategory;
+                    String content = contentController.text;
+
+                    // 이제 title, category, content 변수에 텍스트 필드에서 가져온 값이 저장됩니다.
                   },
                   child: Text('임시저장'),
                 ),
@@ -122,6 +125,14 @@ class _PostAddPageState extends State<PostAddPage> {
                   onPressed: () {
                     // Handle publishing the post
                     print('게시');
+                    String author = userName;
+                    String title = titleController.text;
+                    String category = selectedCategory;
+                    String content = contentController.text;
+
+                    // 이제 title, category, content 변수에 텍스트 필드에서 가져온 값이 저장됩니다.
+                    sheetsHelper.savePostData([author, title, category, content]);
+                    Navigator.of(context).pop();
                   },
                   child: Text('게시'),
                 ),
