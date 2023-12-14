@@ -1,15 +1,32 @@
+import 'package:chugchug/Account/AccountSetting.dart';
 import 'package:chugchug/Community/CommunityMenu.dart';
 import 'package:chugchug/Community/CommunityNotifications.dart';
 import 'package:chugchug/Community/PostAddPage.dart';
 import 'package:chugchug/Community/PostSearchPage.dart';
 import 'package:chugchug/Widgets/Bar_Widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'PostDetailPage.dart';
 import 'Post.dart';
 
+// ignore: must_be_immutable
 class CommunityPage extends StatelessWidget {
+
+  String userName = "";
+
+  CommunityPage({super.key});
+
+  void getUserName() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    userName = prefs.getString('userName') ?? '무명';
+  }
+
+
   @override
   Widget build(BuildContext context) {
+
+    getUserName();
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
@@ -69,18 +86,29 @@ class CommunityPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Row(
-                    children: const [
+                    children: [
                       CircleAvatar(
                         radius: 30,
                         backgroundImage: AssetImage('assets/sample_image.jpeg'),
                       ),
                       SizedBox(width: 16),
                       Text(
-                        '조원재',
+                        userName, // 설정한 별명 표시
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.settings),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AccountSettingPage(),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -115,14 +143,14 @@ class CommunityPage extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsets.all(2.0),
+                                  padding: const EdgeInsets.only(left: 4.0, top: 2.0),
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         post.category,
                                         style: TextStyle(
-                                          fontSize: 14,
+                                          fontSize: 12,
                                           color: Colors.grey,
                                         ),
                                       ),
@@ -130,19 +158,19 @@ class CommunityPage extends StatelessWidget {
                                         title: Text(
                                           post.title,
                                           style: TextStyle(
-                                            fontSize: 18,
+                                            fontSize: 15,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
                                         subtitle: Text(
                                           post.bodyText,
-                                          style: TextStyle(fontSize: 14),
+                                          style: TextStyle(fontSize: 13),
                                           overflow: TextOverflow.ellipsis,
                                           maxLines: 1,
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.all(8.0),
+                                        padding: EdgeInsets.only(left: 8.0),
                                         child: Row(
                                           children: [
                                             Text(
@@ -186,7 +214,7 @@ class CommunityPage extends StatelessWidget {
                                 child: Align(
                                   alignment: Alignment.centerRight,
                                   child: Padding(
-                                    padding: const EdgeInsets.only(top: 8.0),
+                                    padding: const EdgeInsets.only(top: 4.0),
                                     child: Image.asset(
                                       post.imageUrl,
                                       width: 80,
