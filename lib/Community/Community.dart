@@ -96,9 +96,11 @@ class CommunityPage extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) => PostDetailPage(
-                                username: 'Username',
-                                postCaption: post.title,
+                                username: post.author,
+                                postTitle: post.title,
+                                postBodyText: post.bodyText,
                                 postImageUrl: post.imageUrl,
+                                postDateTime: '2023.00.00',
                               ),
                             ),
                           );
@@ -132,7 +134,7 @@ class CommunityPage extends StatelessWidget {
                                             ),
                                           ),
                                           subtitle: Text(
-                                            post.subtitle,
+                                            post.bodyText,
                                             style: TextStyle(fontSize: 14),
                                             overflow: TextOverflow.ellipsis,
                                             maxLines: 1,

@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:chugchug/Community/Community.dart';
+import 'package:chugchug/Community/Post.dart';
 import 'package:chugchug/GoogleSheetsHelper.dart';
 import 'package:chugchug/Widgets/Bar_Widgets.dart';
 import 'package:flutter/material.dart';
@@ -121,6 +123,7 @@ class _PostAddPageState extends State<PostAddPage> {
 
                     // 이제 title, category, content 변수에 텍스트 필드에서 가져온 값이 저장됩니다.
                     sheetsHelper.savePostData([title, category, content]);
+                    Navigator.of(context).pop();
                   },
                   child: Text('게시'),
                 ),
