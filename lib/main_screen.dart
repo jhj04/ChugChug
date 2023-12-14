@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: "척척",
       theme: ThemeData(
         // 전체 배경 색 설정
-        scaffoldBackgroundColor: Color(0xfff5f1e5), // 여기에서 원하는 색상을 선택하세요
+        scaffoldBackgroundColor: Color(0xfffafafa), // 여기에서 원하는 색상을 선택하세요 0xfff5f1e5
       ),
       home: MainPage(),
     );

@@ -7,8 +7,8 @@ class AccountSettingPage extends StatefulWidget {
 }
 
 class _AccountSettingPageState extends State<AccountSettingPage> {
-  String profileImageUrl = 'assets/sample_image.jpeg';
-  String userName = '조원재';
+  String profileImageUrl = 'assets/profile_sample.png';
+  String userName = '무명';
   TextEditingController _nameController = TextEditingController();
 
   @override
@@ -20,13 +20,14 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
   void _loadUserName() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      userName = prefs.getString('userName') ?? '조원재';
+      userName = prefs.getString('userName') ?? '무명';
       _nameController.text = userName;
     });
   }
 
   void _changeProfilePicture() async {
     // TODO: 프로필 사진 변경 로직을 구현하세요.
+    print("프로필 사진 변경 로직");
   }
 
   void _changeUserName() async {

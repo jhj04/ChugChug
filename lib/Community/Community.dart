@@ -89,7 +89,7 @@ class CommunityPage extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         radius: 30,
-                        backgroundImage: AssetImage('assets/sample_image.jpeg'),
+                        backgroundImage: AssetImage('assets/profile_sample.png'),
                       ),
                       SizedBox(width: 16),
                       Text(
@@ -128,7 +128,7 @@ class CommunityPage extends StatelessWidget {
                                 postTitle: post.title,
                                 postBodyText: post.bodyText,
                                 postImageUrl: post.imageUrl,
-                                postDateTime: '2023.00.00',
+                                postDateTime: post.timestamp,
                               ),
                             ),
                           );
@@ -173,6 +173,14 @@ class CommunityPage extends StatelessWidget {
                                         padding: EdgeInsets.only(left: 8.0),
                                         child: Row(
                                           children: [
+                                            Text(
+                                              post.author,
+                                              style: TextStyle(color: Colors.grey, fontSize: 12),
+                                            ),
+                                            Text(
+                                              " · ",
+                                              style: TextStyle(color: Colors.grey, fontSize: 12),
+                                            ),
                                             Text(
                                               post.timestamp,
                                               style: TextStyle(color: Colors.grey, fontSize: 12),
