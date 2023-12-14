@@ -131,4 +131,5 @@ class PostDetailPage extends StatelessWidget {
       ),
     );
   }
+
 }

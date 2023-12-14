@@ -105,101 +105,102 @@ class CommunityPage extends StatelessWidget {
                             ),
                           );
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Card(
-                            elevation: 1,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          post.category,
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            color: Colors.grey,
-                                          ),
+                        child: Card(
+                          elevation: 1,
+                          shape: RoundedRectangleBorder( // 이 부분 제거
+                            borderRadius: BorderRadius.circular(0.0), // 이 부분 제거
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(2.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        post.category,
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.grey,
                                         ),
-                                        ListTile(
-                                          title: Text(
-                                            post.title,
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          subtitle: Text(
-                                            post.bodyText,
-                                            style: TextStyle(fontSize: 14),
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 1,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.all(8.0),
-                                          child: Row(
-                                            children: [
-                                              Text(
-                                                post.timestamp,
-                                                style: TextStyle(color: Colors.grey, fontSize: 12),
-                                              ),
-                                              SizedBox(width: 8),
-                                              Row(
-                                                children: [
-                                                  Icon(Icons.remove_red_eye, size: 16),
-                                                  SizedBox(width: 3),
-                                                  Text(post.views.toString(), style: TextStyle(fontSize: 12)),
-                                                ],
-                                              ),
-                                              SizedBox(width: 8),
-                                              Row(
-                                                children: [
-                                                  Icon(Icons.thumb_up, size: 16),
-                                                  SizedBox(width: 3),
-                                                  Text(post.likes.toString(), style: TextStyle(fontSize: 12)),
-                                                ],
-                                              ),
-                                              SizedBox(width: 8),
-                                              Row(
-                                                children: [
-                                                  Icon(Icons.comment, size: 16),
-                                                  SizedBox(width: 3),
-                                                  Text(post.comments.toString(), style: TextStyle(fontSize: 12)),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(right: 8.0),
-                                  height: 140,
-                                  child: Align(
-                                    alignment: Alignment.centerRight,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(top: 8.0),
-                                      child: Image.asset(
-                                        post.imageUrl,
-                                        width: 100,
-                                        height: 100,
-                                        fit: BoxFit.cover,
                                       ),
+                                      ListTile(
+                                        title: Text(
+                                          post.title,
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        subtitle: Text(
+                                          post.bodyText,
+                                          style: TextStyle(fontSize: 14),
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              post.timestamp,
+                                              style: TextStyle(color: Colors.grey, fontSize: 12),
+                                            ),
+                                            SizedBox(width: 8),
+                                            Row(
+                                              children: [
+                                                Icon(Icons.remove_red_eye, size: 16),
+                                                SizedBox(width: 3),
+                                                Text(post.views.toString(), style: TextStyle(fontSize: 12)),
+                                              ],
+                                            ),
+                                            SizedBox(width: 8),
+                                            Row(
+                                              children: [
+                                                Icon(Icons.thumb_up, size: 16),
+                                                SizedBox(width: 3),
+                                                Text(post.likes.toString(), style: TextStyle(fontSize: 12)),
+                                              ],
+                                            ),
+                                            SizedBox(width: 8),
+                                            Row(
+                                              children: [
+                                                Icon(Icons.comment, size: 16),
+                                                SizedBox(width: 3),
+                                                Text(post.comments.toString(), style: TextStyle(fontSize: 12)),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(right: 8.0),
+                                height: 120,
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 8.0),
+                                    child: Image.asset(
+                                      post.imageUrl,
+                                      width: 80,
+                                      height: 80,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       );
+
                     },
                   ),
                 ),
