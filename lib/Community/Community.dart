@@ -124,7 +124,7 @@ class CommunityPage extends StatelessWidget {
                               padding: const EdgeInsets.all(8.0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
+                                children: [
                                   Text(
                                     'Category', // Replace with actual category
                                     style: TextStyle(
@@ -155,30 +155,45 @@ class CommunityPage extends StatelessWidget {
                                           '2시간 전',
                                           style: TextStyle(color: Colors.grey, fontSize: 12),
                                         ),
-                                        SizedBox(width: 8), // Add space between timestamp and icons
+                                        SizedBox(width: 5),
+
                                         Row(
                                           children: [
-                                            Icon(Icons.remove_red_eye, size: 16),
-                                            SizedBox(width: 3),
-                                            Text('100', style: TextStyle(fontSize: 12)),
+                                            SizedBox(
+                                              width: 70,
+                                              height: 20,
+                                              child: DecoratedBox(decoration: BoxDecoration(
+                                                color:Color(0xff6CA1F1),
+                                                borderRadius: BorderRadius.circular(10.0), 
+                                              )),
+                                            ),
                                           ],
                                         ),
-                                        SizedBox(width: 8), // Add space between icons
-                                        Row(
-                                          children: [
-                                            Icon(Icons.thumb_up, size: 16),
-                                            SizedBox(width: 3),
-                                            Text('50', style: TextStyle(fontSize: 12)),
-                                          ],
-                                        ),
-                                        SizedBox(width: 8), // Add space between icons
-                                        Row(
-                                          children: [
-                                            Icon(Icons.comment, size: 16),
-                                            SizedBox(width: 3),
-                                            Text('5', style: TextStyle(fontSize: 12)),
-                                          ],
-                                        ),
+                                    //     SizedBox(width: 8), // Add space between timestamp and icons
+                                    //     Row(
+                                    //       children: [
+                                    //         Icon(Icons.remove_red_eye, size: 16),
+                                    //         SizedBox(width: 3),
+                                    //         Text('100', style: TextStyle(fontSize: 12)),
+                                    //       ],
+                                    //     ),
+                                    //     SizedBox(width: 8), // Add space between icons
+                                    //     Row(
+                                    //       children: [
+                                    //         Icon(Icons.thumb_up, size: 16),
+                                    //         SizedBox(width: 3),
+                                    //         Text('50', style: TextStyle(fontSize: 12)),
+                                    //       ],
+                                    //     ),
+                                    //     SizedBox(width: 8), // Add space between icons
+                                    //     Row(
+                                    //       children: [
+                                    //         Icon(Icons.comment, size: 16),
+                                    //         SizedBox(width: 3),
+                                    //         Text('5', style: TextStyle(fontSize: 12)),
+                                    //       ],
+                                    //     ),
+                                    
                                       ],
                                     ),
                                   ),
