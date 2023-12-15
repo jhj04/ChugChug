@@ -27,6 +27,24 @@ class ShoppingPage extends StatelessWidget {
           ],
         ),
       ),
+      body: 
+      Center(
+        child: Container(
+          width: double.infinity,
+          height: 160,
+          color: Colors.blue.withOpacity(0.1),
+          child: Text(
+            'Coming soon',
+            style: TextStyle(
+              color: Color(0xff6CA1F1),
+              fontSize: 30,
+              fontFamily: "Fraunces",
+              fontVariations: const <FontVariation>[FontVariation('wght', 700.0)],
+              ),
+              textAlign: TextAlign.center,
+            ),
+        ),
+      ),
     );
   }
 }

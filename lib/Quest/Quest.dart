@@ -45,10 +45,13 @@ class QuestPage extends StatelessWidget {
                 color: Colors.blue, // Customize the character appearance
               ),
               child: Center(
-                child: Text(
-                  '캐릭터 자리',
-                  style: TextStyle(color: Colors.white),
-                ),
+                // child: Text(
+                //   '캐릭터 자리',
+                //   style: TextStyle(color: Colors.white),
+                // ),
+                child:Image.asset(
+                  'chugchug_character.png',
+                  ),
               ),
             ),
             SizedBox(height: 20), // Add spacing between character and quests

@@ -60,42 +60,42 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: 
-      PreferredSize(
-        preferredSize: Size.fromHeight(
-          70.0
-          ),
-          child: Column(
-            //mainAxisAlignment: MainAxisAlignment.center,
-            children : [
-        AppBar(
-            // elevation: 0,
-            //centerTitle: false,
-            //title: Image.asset('assets/chugchug.png', fit: BoxFit.contain, height: 80,),
-            backgroundColor:Color(0xffF5F5F5),
-            
-            leading: IconButton(
+      appBar: AppBar(
+        title: Row(
+          children: [
+            Image.asset(
+              'assets/ChugChug_Typo.png',
+              fit: BoxFit.contain,
+              height: 50,
+            ),
+            SizedBox(width: 8), // Add spacing between image and text
+            Text(
+              'CHUG-CHUG',
+              style: TextStyle(
+                fontSize: 20,
+                fontFamily: "Fraunces",
+                fontVariations: const <FontVariation>[FontVariation('wght', 700.0)],
+              ),
+            ),
+          ],
+        ),
+        leading: IconButton(
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) => MyWidget()));
               },
               icon: Icon(
                 Icons.menu,
                 size: 50,
+                color: Colors.white,
               ),
               ),
-            
-        ),
-        // SizedBox(
-        //   height: 10,
-        // )
-      ],
-      ),),
+      ),
       body: Stack(
         children: <Widget>[
         Container(
           width: double.infinity,
           height: 1300,
-          color: Color(0xffF5F5F5),
+          color: Color(0xff6CA1F1).withOpacity(0.5),
         ),
         // WaveWidget(
         //       config: CustomConfig(
