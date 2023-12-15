@@ -9,7 +9,7 @@ class PostAddPage extends StatefulWidget {
 }
 
 class _PostAddPageState extends State<PostAddPage> {
-  String selectedCategory = '궁금해요'; // Default category
+  String selectedCategory = '과제'; // Default category
   TextEditingController titleController = TextEditingController();
   TextEditingController contentController = TextEditingController();
   late ImagePicker _imagePicker;
@@ -68,7 +68,7 @@ class _PostAddPageState extends State<PostAddPage> {
             SizedBox(height: 16),
             DropdownButtonFormField(
               value: selectedCategory,
-              items: ['궁금해요', '모여요', '공유해요']
+              items: ['과제', '일상', '기타']
                   .map((category) => DropdownMenuItem(
                 value: category,
                 child: Text(category),

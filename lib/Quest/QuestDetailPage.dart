@@ -1,5 +1,3 @@
-// QuestDetailPage.dart
-
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -47,7 +45,6 @@ class QuestDetailPage extends StatelessWidget {
               'Quest Description: $description',
               style: TextStyle(fontSize: 16),
             ),
-            // Add more details as needed
           ],
         ),
       ),

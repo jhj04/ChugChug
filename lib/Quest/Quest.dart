@@ -45,10 +45,6 @@ class QuestPage extends StatelessWidget {
                 color: Colors.blue, // Customize the character appearance
               ),
               child: Center(
-                // child: Text(
-                //   '캐릭터 자리',
-                //   style: TextStyle(color: Colors.white),
-                // ),
                 child:Image.asset(
                   'chugchug_character.png',
                   ),
@@ -62,7 +58,7 @@ class QuestPage extends StatelessWidget {
                 children: [
                   QuestItem(title: '예시 퀘스트 1', description: '퀘스트를 완료하세요!'),
                   QuestItem(title: '조원재 밥 사주기', description: '배고파요'),
-                  QuestItem(title: '정현주 플러터 일거리 뺏기', description: '야무지게 가져가야지'),
+                  QuestItem(title: '크리스마스', description: '야무지게 가져가야지'),
                   // Add more quest items as needed
                 ],
               ),

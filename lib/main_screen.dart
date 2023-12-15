@@ -1,4 +1,4 @@
-import 'package:chugchug/Community.dart';
+import 'package:chugchug/Community/Community.dart';
 import 'package:chugchug/MyPage.dart';
 import 'package:chugchug/Quest/Quest.dart';
 import 'package:chugchug/Shopping.dart';

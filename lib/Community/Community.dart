@@ -5,7 +5,7 @@ import 'package:chugchug/Community/CommunityNotifications.dart';
 import 'package:chugchug/Community/PostAddPage.dart';
 import 'package:chugchug/Community/PostSearchPage.dart';
 import 'package:flutter/material.dart';
-import 'Community/PostDetailPage.dart'; // Import your PostDetailPage.dart file here
+import 'PostDetailPage.dart'; // Import your PostDetailPage.dart file here
 
 class CommunityPage extends StatelessWidget {
   @override
@@ -22,7 +22,7 @@ class CommunityPage extends StatelessWidget {
             ),
             SizedBox(width: 8), // Add spacing between image and text
             Text(
-              'Community',
+              'History',
               style: TextStyle(
                 fontSize: 20,
                 fontFamily: "Fraunces",
