@@ -1,5 +1,3 @@
-// Quest.dart
-
 import 'dart:ui';
 
 import 'package:chugchug/Quest/QuestDetailPage.dart';
@@ -56,7 +54,7 @@ class QuestPage extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  QuestItem(title: '예시 퀘스트 1', description: '퀘스트를 완료하세요!'),
+                  QuestItem(title: '예시 퀘스트 1', description: '퀘스트를 완료하세요!',),
                   QuestItem(title: '조원재 밥 사주기', description: '배고파요'),
                   QuestItem(title: '크리스마스', description: '야무지게 가져가야지'),
                   // Add more quest items as needed

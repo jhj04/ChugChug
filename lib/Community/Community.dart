@@ -56,18 +56,18 @@ class CommunityPage extends StatelessWidget {
               );
             },
           ),
-          IconButton(
-            icon: Icon(Icons.menu),
-            onPressed: () {
-              // Handle notification button press
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => CommunityMenuPage(),
-                ),
-              );
-            },
-          ),
+          // IconButton(
+          //   icon: Icon(Icons.menu),
+          //   onPressed: () {
+          //     // Handle notification button press
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(
+          //         builder: (context) => CommunityMenuPage(),
+          //       ),
+          //     );
+          //   },
+          // ),
         ],
       ),
       body: Column(

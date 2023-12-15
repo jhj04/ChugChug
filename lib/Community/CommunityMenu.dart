@@ -16,7 +16,7 @@ class CommunityMenuPage extends StatelessWidget {
             ),
             SizedBox(width: 8), // Add spacing between image and text
             Text(
-              'Community',
+              'Setting',
               style: TextStyle(
                 fontSize: 20,
                 fontFamily: "Fraunces",

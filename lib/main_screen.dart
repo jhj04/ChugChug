@@ -1,4 +1,5 @@
 import 'package:chugchug/Community/Community.dart';
+import 'package:chugchug/Community/CommunityMenu.dart';
 import 'package:chugchug/MyPage.dart';
 import 'package:chugchug/Quest/Quest.dart';
 import 'package:chugchug/Shopping.dart';
@@ -81,7 +82,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
         ),
         leading: IconButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MyWidget()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => CommunityMenuPage()));
               },
               icon: Icon(
                 Icons.menu,
