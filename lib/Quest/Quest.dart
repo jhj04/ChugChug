@@ -54,9 +54,9 @@ class QuestPage extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  QuestItem(title: '예시 퀘스트 1', description: '퀘스트를 완료하세요!',),
-                  QuestItem(title: '조원재 밥 사주기', description: '배고파요'),
-                  QuestItem(title: '크리스마스', description: '야무지게 가져가야지'),
+                  QuestItem(title: '과제하기', description: '눈높이 한 장 과제 퀘스트를 완료하세요!',),
+                  QuestItem(title: '예시 퀘스트 2', description: '퀘스트를 완료하세요!'),
+                  QuestItem(title: '예시 퀘스트 3', description: '퀘스트를 완료하세요!'),
                   // Add more quest items as needed
                 ],
               ),

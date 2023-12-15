@@ -216,17 +216,17 @@ class CommunityPage extends StatelessWidget {
 
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => PostAddPage(),
-            ),
-          );
-        },
-        child: Icon(Icons.edit),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Navigator.push(
+      //       context,
+      //       MaterialPageRoute(
+      //         builder: (context) => PostAddPage(),
+      //       ),
+      //     );
+      //   },
+      //   child: Icon(Icons.edit),
+      // ),
     );
   }
 }
