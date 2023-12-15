@@ -1,9 +1,11 @@
 import 'package:chugchug/Community.dart';
 import 'package:chugchug/MyPage.dart';
 import 'package:chugchug/Quest/Quest.dart';
+import 'package:chugchug/Shopping.dart';
 import 'package:flutter/material.dart';
 // import 'package:wave/config.dart';
 // import 'package:wave/wave.dart';
+import 'dart:ui';
 
 void main() {
   runApp(const MyApp());
@@ -185,10 +187,12 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                     ),
                     child: (
                       Text(
-                        "척척이",
+                        "chugchug",
                         style:TextStyle(
                           color: Colors.white,
                           fontSize: 30,
+                          fontFamily: "Fraunces",
+                          fontVariations: const <FontVariation>[FontVariation('wght', 700.0)],
                           ),
                           textAlign: TextAlign.center,
                       )
@@ -237,10 +241,11 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                       child: 
                       IconButton(
                         onPressed: () {
-                          
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ShoppingPage()));
+
                         },
                         icon: Icon(
-                          Icons.search,
+                          Icons.wallet_giftcard_rounded,
                           size: 70),
                         ),
                     ),
