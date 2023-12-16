@@ -16,7 +16,7 @@ class CommunityPage extends StatelessWidget {
         title: Row(
           children: [
             Image.asset(
-              'assets/ChugChug_Typo.png',
+              'ChugChug_Typo.png',
               fit: BoxFit.contain,
               height: 50,
             ),
@@ -80,11 +80,11 @@ class CommunityPage extends StatelessWidget {
               children: const [
                 CircleAvatar(
                   radius: 30,
-                  backgroundImage: AssetImage('assets/sample_image.jpeg'),
+                  backgroundImage: AssetImage('assets/chugchug_character.png'),
                 ),
                 SizedBox(width: 16),
                 Text(
-                  '조원재',
+                  'chugchug',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,

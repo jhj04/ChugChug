@@ -46,7 +46,7 @@ class PostDetailPage extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: CircleAvatar(
               radius: 30,
-              backgroundImage: AssetImage('assets/sample_image.jpeg'),
+              backgroundImage: AssetImage('assets/chugchug_character.png'),
             ),
           ),
           Padding(
